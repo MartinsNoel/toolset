@@ -1,10 +1,9 @@
-import binascii
 import re
-print '###Convertion start###'
+import base64
 
-result = False
+print '\n' + '###Start of script###' + '\n'
 
-input= '00 05 73 a0 00 00 e0 69 95 d8 5a 13 86 dd 60 00\
+rawHex= '00 05 73 a0 00 00 e0 69 95 d8 5a 13 86 dd 60 00\
    00 00 00 9b 06 40 26 07 53 00 00 60 2a bc 00 00\
    00 00 ba de c0 de 20 01 41 d0 00 02 42 33 00 00\
    00 00 00 00 00 04 96 74 00 50 bc ea 7d b8 00 c1\
@@ -19,9 +18,17 @@ input= '00 05 73 a0 00 00 e0 69 95 d8 5a 13 86 dd 60 00\
    0d 0a 41 63 63 65 70 74 3a 20 2a 2f 2a 0d 0a 0d\
    0a '
 
-input= re.sub(r"\s+", "", input, flags=re.UNICODE)
+#Sanatize and print raw hex chain
+parsedHex = re.sub(r"\s+", "", rawHex, flags=re.UNICODE)
+print parsedHex
 
-print input
-result = input.decode('hex')
+#decode and print hex chain
+result = parsedHex.decode('hex')
+print '\n' + result + '\n' \
 
+#decode and print HTTP/base64 sensitive infos
+sensitiveData = 'Y29uZmk6ZGVudGlhbA=='
+result = base64.b64decode(sensitiveData)
 print result
+
+print '\n' + '###End of script###' + '\n'
