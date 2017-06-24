@@ -17,7 +17,7 @@ rawHex= '00 05 73 a0 00 00 e0 69 95 d8 5a 13 86 dd 60 00\
    3a 20 77 77 77 2e 6d 79 69 70 76 36 2e 6f 72 67\
    0d 0a 41 63 63 65 70 74 3a 20 2a 2f 2a 0d 0a 0d\
    0a '
-
+ 
 #Sanatize and print raw hex chain
 parsedHex = re.sub(r"\s+", "", rawHex, flags=re.UNICODE)
 print parsedHex
